@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grid Cybersecurity Framework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🔒 AI-Enabled Smart Grid Cybersecurity Framework</h1>
+            <p class="subtitle">Real-Time Threat Detection & Monitoring System</p>
+        </header>
+
+        <!-- Control Panel -->
+        <section class="control-panel">
+            <button id="simulateBtn" class="simulate-btn">
+                <span class="btn-icon">⚡</span>
+                Simulate Grid Event
+            </button>
+            <div class="status-indicator">
+                <span class="status-dot" id="systemStatus"></span>
+                <span id="systemStatusText">System Ready</span>
+            </div>
+        </section>
+
+        <!-- Main Dashboard -->
+        <div class="dashboard">
+            <!-- Grid Event Panel -->
+            <div class="panel event-panel">
+                <div class="panel-header">
+                    <h2>📊 Grid Event Data</h2>
+                    <span class="timestamp" id="eventTimestamp">--</span>
+                </div>
+                <div class="panel-content" id="eventContent">
+                    <div class="placeholder">
+                        Click "Simulate Grid Event" to start monitoring
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detection Status Panel -->
+            <div class="panel status-panel">
+                <div class="panel-header">
+                    <h2>🎯 Detection Status</h2>
+                </div>
+                <div class="panel-content" id="statusContent">
+                    <div class="status-display">
+                        <div class="status-badge" id="statusBadge">
+                            <span class="badge-text">WAITING</span>
+                        </div>
+                        <p class="status-message" id="statusMessage">No events processed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metrics Panel -->
+            <div class="panel metrics-panel">
+                <div class="panel-header">
+                    <h2>📈 System Metrics</h2>
+                </div>
+                <div class="panel-content" id="metricsContent">
+                    <div class="metric-grid">
+                        <div class="metric-item">
+                            <span class="metric-label">Voltage Deviation</span>
+                            <span class="metric-value" id="voltageDeviation">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Latency Deviation</span>
+                            <span class="metric-value" id="latencyDeviation">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Frequency Deviation</span>
+                            <span class="metric-value" id="frequencyDeviation">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alert Panel -->
+            <div class="panel alert-panel">
+                <div class="panel-header">
+                    <h2>🚨 Alert Information</h2>
+                </div>
+                <div class="panel-content" id="alertContent">
+                    <div class="no-alerts">
+                        No anomalies detected
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Architecture Info -->
+        <section class="architecture-info">
+            <h3>System Architecture</h3>
+            <div class="arch-layers">
+                <div class="layer active">
+                    <span class="layer-icon">✓</span>
+                    <span>Cloud Foundation</span>
+                </div>
+                <div class="layer active">
+                    <span class="layer-icon">✓</span>
+                    <span>Smart Grid Simulator</span>
+                </div>
+                <div class="layer active">
+                    <span class="layer-icon">✓</span>
+                    <span>Perceptual Detection</span>
+                </div>
+                <div class="layer">
+                    <span class="layer-icon">○</span>
+                    <span>Threat Modeling (Planned)</span>
+                </div>
+                <div class="layer">
+                    <span class="layer-icon">○</span>
+                    <span>Cascade Prediction (Planned)</span>
+                </div>
+                <div class="layer">
+                    <span class="layer-icon">○</span>
+                    <span>Strategic Orchestration (Planned)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 AI-Enabled Cybersecurity Framework | Production v1.0.0</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Processing grid event...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
