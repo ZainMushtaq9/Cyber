@@ -187,7 +187,9 @@ def generate_explanation(data):
 # -----------------------------
 # API Endpoint
 # -----------------------------
-
+@app.get("/")
+def health():
+    return {"status": "Smart Grid Agentic Framework Running"}
 @app.get("/simulate")
 def simulate():
 
