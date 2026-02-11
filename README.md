@@ -1,347 +1,341 @@
-# 🔒 AI-Enabled Cybersecurity Framework for Smart Grid Threat Modeling
+# Smart Grid Cybersecurity Framework - Backend
 
-## Production-Ready Smart Grid Agentic AI System
+AI-Enabled Perceptual Detection System for Smart Grid Security
 
-### 📋 Project Overview
+## 📋 Overview
 
-This framework implements an intelligent cybersecurity system for smart grid infrastructure, featuring:
-- **Real-time threat detection**
-- **Anomaly analysis using perceptual AI agents**
-- **Event simulation and monitoring**
-- **Scalable architecture for advanced threat modeling**
+This backend implements Chunks 0, 1, and 2 of the Smart Grid Cybersecurity Framework:
+- **Chunk 0**: System initialization and health monitoring
+- **Chunk 1**: Smart grid event simulation
+- **Chunk 2**: Perceptual detection layer (3 agents)
 
----
+## 🏗️ Architecture
 
-## 🏗️ System Architecture
+### Perceptual Detection Layer
 
 ```
-Frontend (HTML/CSS/JS)
-        ↓
-Railway Backend (FastAPI)
-        ↓
-Smart Grid Simulator
-        ↓
-Perceptual Agents
-        ↓
-(Threat Modeling Layers - Planned)
+Smart Grid Event
+       ↓
+[Data Fusion Agent] → Structures raw data
+       ↓
+[Behavioral Envelope Agent] → Calculates deviations
+       ↓
+[Anomaly Detection Agent] → Applies threshold rules
+       ↓
+Detection Result + Logging
 ```
 
-### Active Components (Chunks 0-2)
+### Agent Details
 
-✅ **Chunk 0: Cloud Foundation**
-- Railway deployment
-- Health monitoring
-- CORS configuration
+1. **Data Fusion Agent**
+   - Structures raw event data
+   - Normalizes sensor readings
+   - Prepares system state
 
-✅ **Chunk 1: Smart Grid Simulator**
-- Event generation (70% normal, 30% attack)
-- Component simulation
-- Realistic parameter ranges
+2. **Behavioral Envelope Agent**
+   - Calculates voltage deviation from baseline (230V)
+   - Calculates latency deviation from baseline (20ms)
+   - Generates behavioral metrics
 
-✅ **Chunk 2: Perceptual Detection Layer**
-- DataFusionAgent
-- BehavioralEnvelopeAgent
-- AnomalyDetectionAgent
+3. **Anomaly Detection Agent**
+   - Applies deterministic threshold rules
+   - Voltage threshold: 15V deviation
+   - Latency threshold: 50ms deviation
+   - Assigns severity levels: NORMAL, MEDIUM, HIGH, CRITICAL
 
-### Planned Components (Architectural Placeholders)
+## 🚀 Deployment
 
-🔄 **Threat Modeling Layer**
-- ArchitecturalAnalyzerAgent
-- ThreatContextWeaverAgent
+### Railway Deployment (Production)
 
-🔄 **Cascade Prediction Layer**
-- CascadePredictorAgent
-- GoalInferencerAgent
+1. **Prerequisites**
+   - Railway account
+   - GitHub repository
 
-🔄 **Strategic Orchestration Layer**
-- CognitiveOrchestratorAgent
-- MitigationGeneratorAgent
-- ResourceSchedulerAgent
-
----
-
-## 🚀 Backend Deployment (Railway)
-
-### Prerequisites
-- Railway account
-- GitHub repository
-
-### Step 1: Deploy to Railway
-
-1. **Create New Project in Railway**
-   - Go to [Railway.app](https://railway.app)
-   - Click "New Project"
-   - Select "Deploy from GitHub repo"
-
-2. **Configure Environment**
-   - Add environment variable: `GROQ_API_KEY` (if needed for future features)
-   - Railway will auto-detect Python and use `Procfile`
-
-3. **Deploy**
-   - Railway will automatically:
-     - Install dependencies from `requirements.txt`
-     - Run the application using `Procfile`
-     - Assign a public URL
-
-### Step 2: Verify Deployment
-
-Test the health endpoint:
-```bash
-curl https://cyber-production-7ec6.up.railway.app/
-```
-
-Expected response:
-```json
-{
-  "status": "Smart Grid Agentic Framework Running",
-  "version": "1.0.0",
-  "chunks_active": ["0", "1", "2"],
-  "timestamp": "2024-XX-XXTXX:XX:XX"
-}
-```
-
----
-
-## 💻 Frontend Setup
-
-### Option 1: GitHub Pages
-
-1. **Push to GitHub Repository**
+2. **Deploy Steps**
    ```bash
-   git add index.html style.css script.js
-   git commit -m "Deploy Smart Grid Framework frontend"
+   # Push code to GitHub
+   git add .
+   git commit -m "Deploy backend"
    git push origin main
+   
+   # In Railway Dashboard:
+   # 1. Create New Project
+   # 2. Deploy from GitHub repo
+   # 3. Railway auto-detects Python/Flask
+   # 4. Deployment starts automatically
    ```
 
-2. **Enable GitHub Pages**
-   - Go to repository Settings
-   - Navigate to "Pages"
-   - Select source: `main` branch
-   - Save
+3. **Environment Variables** (Optional)
+   ```
+   PORT=5000  # Railway sets this automatically
+   ```
 
-3. **Access Dashboard**
-   - URL: `https://[username].github.io/[repository]/`
+4. **Verify Deployment**
+   ```bash
+   curl https://your-app.up.railway.app/
+   # Should return: {"status": "running", ...}
+   ```
 
-### Option 2: Local Development
+### Local Development
 
-```bash
-# Simply open index.html in a browser
-# Or use a local server:
-python -m http.server 8080
-# Access: http://localhost:8080
-```
+1. **Setup**
+   ```bash
+   # Create virtual environment
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   
+   # Install dependencies
+   pip install -r requirements.txt
+   ```
 
----
+2. **Run**
+   ```bash
+   python app.py
+   # Server runs on http://localhost:5000
+   ```
 
 ## 📡 API Endpoints
 
-### 1. Health Check
-```
+### Health Check
+```http
 GET /
 ```
-Returns system status and version information.
-
-### 2. Simulate Grid Event
-```
-GET /simulate
-```
-
-**Response (Normal Operation):**
+**Response:**
 ```json
 {
-  "status": "Normal Operation",
+  "status": "running",
+  "message": "AI-Enabled Smart Grid Cybersecurity Framework",
+  "version": "1.0.0",
+  "chunks_active": [0, 1, 2]
+}
+```
+
+### Simulate Event
+```http
+GET /simulate
+```
+**Response:**
+```json
+{
   "event": {
-    "component": "DER",
-    "voltage": 235.4,
+    "timestamp": "2024-02-11T10:30:00.123456",
+    "component": "Transformer_T1",
+    "voltage": 225.5,
     "frequency": 50.1,
-    "latency": 45.2,
-    "timestamp": "2024-XX-XX..."
+    "network_latency": 25.3,
+    "event_type": "normal"
   },
-  "metrics": {
-    "voltage_deviation": 5.4,
-    "latency_deviation": -4.8,
-    "frequency_deviation": 0.1
+  "behavioral_metrics": {
+    "voltage_deviation": 4.5,
+    "latency_deviation": 5.3,
+    "frequency": 50.1
+  },
+  "detection": {
+    "is_anomaly": false,
+    "severity": "NORMAL",
+    "alert_type": "No Anomaly",
+    "voltage_anomaly": false,
+    "latency_anomaly": false
   }
 }
 ```
 
-**Response (Anomaly Detected):**
+### Get Metrics
+```http
+GET /metrics
+```
+**Response:**
 ```json
 {
-  "status": "Anomaly Detected",
-  "event": { ... },
-  "alert": {
-    "anomaly_detected": true,
-    "anomalies": [
-      {
-        "type": "Voltage Anomaly",
-        "severity": "High",
-        "deviation": 35.2
-      }
-    ],
-    "total_anomalies": 1
-  },
-  "metrics": { ... }
+  "total_events": 45,
+  "total_anomalies": 13,
+  "detection_rate": 28.89
 }
 ```
 
-### 3. System Information
+### Get Logs
+```http
+GET /logs?limit=10
 ```
-GET /system-info
+**Response:**
+```json
+{
+  "logs": [...],
+  "total_logs": 10
+}
 ```
-Returns architecture and agent information.
 
----
+### Get History
+```http
+GET /history?limit=10
+```
+**Response:**
+```json
+{
+  "history": [...],
+  "total_in_memory": 10
+}
+```
+
+### Export Logs (CSV)
+```http
+GET /export
+```
+Returns CSV file with all logged events.
+
+## 🧪 Testing
+
+### Manual Testing
+
+1. **Health Check Test**
+   ```bash
+   curl https://your-app.up.railway.app/
+   ```
+   Expected: JSON response with "status": "running"
+
+2. **Simulation Test**
+   ```bash
+   curl https://your-app.up.railway.app/simulate
+   ```
+   Expected: Full event data with detection results
+
+3. **Metrics Test**
+   ```bash
+   curl https://your-app.up.railway.app/metrics
+   ```
+   Expected: Current metrics
+
+4. **Repeated Simulation** (10 times)
+   ```bash
+   for i in {1..10}; do
+     curl https://your-app.up.railway.app/simulate
+     echo ""
+   done
+   ```
+   Expected: Mix of normal and anomaly events
+
+### Automated Testing Script
+
+Create `test_backend.py`:
+```python
+import requests
+import json
+
+BASE_URL = "https://your-app.up.railway.app"
+
+def test_health():
+    response = requests.get(f"{BASE_URL}/")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "running"
+    print("✅ Health check passed")
+
+def test_simulation():
+    response = requests.get(f"{BASE_URL}/simulate")
+    assert response.status_code == 200
+    data = response.json()
+    assert "event" in data
+    assert "detection" in data
+    print(f"✅ Simulation passed - {data['detection']['alert_type']}")
+
+def test_metrics():
+    response = requests.get(f"{BASE_URL}/metrics")
+    assert response.status_code == 200
+    data = response.json()
+    assert "total_events" in data
+    print(f"✅ Metrics passed - {data['total_events']} events")
+
+if __name__ == "__main__":
+    test_health()
+    for i in range(10):
+        test_simulation()
+    test_metrics()
+    print("\n✅ All tests passed!")
+```
+
+Run:
+```bash
+python test_backend.py
+```
+
+## 📊 Logging System
+
+### Log Format (JSONL)
+Each event is logged to `event_logs.jsonl`:
+```json
+{"timestamp": "2024-02-11T10:30:00", "component": "Transformer_T1", "voltage": 225.5, "frequency": 50.1, "network_latency": 25.3, "voltage_deviation": 4.5, "latency_deviation": 5.3, "is_anomaly": false, "severity": "NORMAL", "alert_type": "No Anomaly"}
+```
+
+### Accessing Logs
+- **API**: `GET /logs?limit=N`
+- **Export**: `GET /export` (CSV format)
+- **File**: Read `event_logs.jsonl` directly
 
 ## 🔧 Configuration
 
-### Backend (`app.py`)
-- **PORT**: Auto-configured by Railway (default: 8000)
-- **CORS**: Enabled for all origins
-- **Thresholds**:
-  - Voltage anomaly: ±15V from 230V baseline
-  - Latency anomaly: ±120ms from 50ms baseline
-
-### Frontend (`script.js`)
-- **API_BASE_URL**: Update if backend URL changes
-  ```javascript
-  const API_BASE_URL = 'https://cyber-production-7ec6.up.railway.app';
-  ```
-
----
-
-## 🎯 Usage
-
-### 1. Open Frontend Dashboard
-Navigate to your deployed frontend URL.
-
-### 2. Simulate Grid Event
-Click the "⚡ Simulate Grid Event" button.
-
-### 3. Monitor Results
-- **Grid Event Data**: Component readings
-- **Detection Status**: Normal/Anomaly badge
-- **System Metrics**: Deviation values
-- **Alert Information**: Anomaly details (if detected)
-
-### 4. Interpret Results
-
-**Green Status (Normal)**
-- All parameters within acceptable ranges
-- Minor deviations are acceptable
-
-**Red Status (Anomaly)**
-- Critical parameter deviations detected
-- High/Medium severity alerts
-- Immediate attention required
-
----
-
-## 📊 Detection Logic
-
-### Anomaly Rules
-
-1. **Voltage Anomaly**
-   - Triggered when: `|voltage - 230V| > 15V`
-   - Severity:
-     - High: deviation > 25V
-     - Medium: deviation 15-25V
-
-2. **Network Anomaly**
-   - Triggered when: `|latency - 50ms| > 120ms`
-   - Severity:
-     - High: deviation > 200ms
-     - Medium: deviation 120-200ms
-
----
-
-## 📁 File Structure
-
-```
-project/
-│
-├── app.py                 # FastAPI backend
-├── requirements.txt       # Python dependencies
-├── Procfile              # Railway deployment config
-│
-├── index.html            # Frontend dashboard
-├── style.css             # Styling
-├── script.js             # API integration
-│
-└── README.md             # Documentation
+### Detection Thresholds
+Modify in `app.py`:
+```python
+VOLTAGE_THRESHOLD = 15.0   # Volts
+LATENCY_THRESHOLD = 50.0   # Milliseconds
+BASELINE_VOLTAGE = 230.0   # Volts
+BASELINE_LATENCY = 20.0    # Milliseconds
 ```
 
----
+### Event Generation Probabilities
+```python
+is_attack = random.random() < 0.3  # 30% attack, 70% normal
+```
+
+## 📈 Metrics & Monitoring
+
+### Real-time Metrics
+- Total events processed
+- Total anomalies detected
+- Detection rate (%)
+
+### Event History
+- Last 100 events stored in memory
+- Full history in `event_logs.jsonl`
+
+## 🔮 Future Layers (Placeholders)
+
+The following endpoints exist for future implementation:
+- `POST /threat-model` - Threat Modeling Layer
+- `POST /cascade-predict` - Cascade Prediction Layer
+
+Currently return 501 (Not Implemented).
 
 ## 🐛 Troubleshooting
 
-### Backend Issues
+### CORS Issues
+Ensure `flask-cors` is installed and CORS is enabled:
+```python
+from flask_cors import CORS
+CORS(app)
+```
 
-**Problem**: Backend not responding
-- **Solution**: Check Railway logs, verify deployment status
+### Port Issues on Railway
+Railway auto-assigns PORT. Code uses:
+```python
+port = int(os.environ.get('PORT', 5000))
+```
 
-**Problem**: CORS errors
-- **Solution**: Ensure CORS middleware is enabled in `app.py`
-
-### Frontend Issues
-
-**Problem**: "Backend Offline" status
-- **Solution**: 
-  1. Verify backend URL in `script.js`
-  2. Check backend is running
-  3. Test health endpoint manually
-
-**Problem**: No data displaying
-- **Solution**: Open browser console (F12) to check for errors
-
----
-
-## 🔄 Future Enhancements (Next Phases)
-
-### Phase 2: Threat Modeling
-- Activate ArchitecturalAnalyzerAgent
-- Implement ThreatContextWeaverAgent
-- Add MITRE ATT&CK mapping
-
-### Phase 3: Cascade Prediction
-- NetworkX graph integration
-- CascadePredictorAgent implementation
-- Goal inference logic
-
-### Phase 4: Strategic Layer
-- Cognitive orchestration
-- Automated mitigation
-- Resource scheduling
-
----
+### Logs Not Persisting
+Railway has ephemeral filesystem. Logs reset on redeploy.
+For persistent logs, consider:
+- Database integration
+- External logging service
+- Cloud storage
 
 ## 📞 Support
 
 For issues or questions:
-1. Check Railway logs for backend errors
-2. Inspect browser console for frontend errors
-3. Verify API endpoint connectivity
-4. Review this documentation
-
----
+1. Check Railway logs
+2. Verify CORS settings
+3. Test endpoints with curl
+4. Review error messages in browser console
 
 ## 📄 License
 
-Production deployment for Smart Grid Cybersecurity Framework v1.0.0
-
----
-
-## ✅ Deployment Checklist
-
-- [ ] Backend deployed to Railway
-- [ ] Environment variables configured
-- [ ] Health endpoint responding
-- [ ] Frontend deployed to GitHub Pages
-- [ ] API_BASE_URL updated in script.js
-- [ ] Test simulation working
-- [ ] Anomaly detection functioning
-- [ ] All panels displaying correctly
-
----
-
-**Status**: ✅ Production Ready | **Version**: 1.0.0 | **Chunks Active**: 0, 1, 2
+Academic project - Smart Grid Cybersecurity Framework
